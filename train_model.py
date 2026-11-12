@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Model configuration
-N_ESTIMATORS = 100
+N_ESTIMATORS = 150
 MODEL_FILE = "model.joblib"
 
 def train_model():

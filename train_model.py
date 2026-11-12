@@ -4,21 +4,18 @@ import joblib
 
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# Initial model configuration
-
-N_ESTIMATORS = 150
+# Model configuration
+N_ESTIMATORS = 100
 MODEL_FILE = "model.joblib"
-
 
 def train_model():
 
     print("STEP 1: Loading Iris dataset")
 
     iris = load_iris()
-
     X = iris.data
     y = iris.target
 
@@ -56,8 +53,6 @@ def train_model():
 
     artifact = {
         "model": model,
-        "feature_names": iris.feature_names,
-        "target_names": iris.target_names,
         "accuracy": accuracy,
         "n_estimators": N_ESTIMATORS
     }
@@ -67,9 +62,8 @@ def train_model():
     joblib.dump(artifact, MODEL_FILE)
 
     print("Model saved successfully:", MODEL_FILE)
-    print("File exists:", os.path.exists(MODEL_FILE))
 
-    print("\nTraining completed successfully.")
+    print("\nTraining completed successfully!")
 
 
 if __name__ == "__main__":

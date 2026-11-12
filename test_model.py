@@ -44,12 +44,3 @@ def test_model_predictions():
     )
 
     print("TEST 3 PASSED: Predictions are valid.")
-
-
-if __name__ == "__main__":
-
-    test_model_file_exists()
-    test_model_loads_correctly()
-    test_model_predictions()
-
-    print("\nAll three automated tests passed!")

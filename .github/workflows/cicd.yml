@@ -16,10 +16,12 @@ permissions:
   contents: read
 
 jobs:
-  train-test-and-store-model:
+  train-test-and-deploy:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -37,16 +39,16 @@ jobs:
         run: python train_model.py
 
       - name: Run automated tests
-        run: python test_model.py
+        run: python -m pytest -v test_model.py
 
       - name: Verify model artifact
         run: |
           python -c "import os; assert os.path.isfile('model.joblib'); print('Model artifact verified successfully')"
 
-      - name: Upload trained model artifact
+      - name: Deploy model artifact
         uses: actions/upload-artifact@v4
         with:
-          name: trained-ai-model
+          name: deployed-ai-model
           path: model.joblib
           if-no-files-found: error
           retention-days: 30
